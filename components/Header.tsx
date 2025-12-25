@@ -64,15 +64,14 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex justify-between items-center h-full">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
+            <div className="flex-shrink-0 flex items-center">    
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center">
-                <Logo 
-                  className={`transition-all duration-300 ${isScrolled ? 'h-8 md:h-9' : 'h-11 md:h-13'} w-auto`}
+                <Logo
+                  className={`transition-all duration-300 ${isScrolled ? 'h-16 md:h-20' : 'h-24 md:h-32'} w-auto`}
                   color="#182C2D"
                 />
               </Link>
             </div>
-
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-10 items-center">
               <button onClick={() => scrollIntoView('hero')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent rounded-sm px-1">Home</button>

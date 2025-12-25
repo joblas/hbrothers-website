@@ -9,12 +9,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-24 mb-20">
           {/* Brand Column */}
           <div className="space-y-8 flex flex-col items-center md:items-start">
-            <Logo 
-              className="h-14 w-auto" 
+            <Logo
+              className="h-32 md:h-48 w-auto"
               color="#FFFFFF"
               mode="horizontal"
-            />
-            <p className="text-gray-300 text-sm leading-relaxed text-center md:text-left">
+            />            <p className="text-gray-300 text-sm leading-relaxed text-center md:text-left">
               Serving homestyle comfort food to downtown Escondido. Family recipes, generous portions, and a whole lot of love since our start on Grand Ave.
             </p>
             <div className="flex space-x-5">
