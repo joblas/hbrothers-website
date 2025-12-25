@@ -22,12 +22,12 @@ Instructions:
 3. Always suggest the Brisket Mac for first-timers.
 `;
 
-export interface BaristaResponse {
+export interface ConciergeResponse {
   text: string;
   sources?: { title: string; uri: string }[];
 }
 
-export const getBaristaResponse = async (userMessage: string): Promise<BaristaResponse> => {
+export const getConciergeResponse = async (userMessage: string): Promise<ConciergeResponse> => {
   if (!apiKey) return { text: "Our kitchen is prepping! Please call (442) 999-5542." };
 
   // Re-init for latest key access

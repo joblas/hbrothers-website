@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { getBaristaResponse } from '../services/geminiService';
+import { getConciergeResponse } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
 interface ExtendedChatMessage extends ChatMessage {
@@ -13,7 +13,7 @@ const SUGGESTIONS = [
   "Holiday hours?"
 ];
 
-const ChatBarista: React.FC = () => {
+const HBrothersConcierge: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ExtendedChatMessage[]>([
     { role: 'model', text: "Hey! Ready for some comfort food? Ask me about our 12-hour brisket!" }
@@ -40,7 +40,7 @@ const ChatBarista: React.FC = () => {
     setMessages(prev => [...prev, { role: 'user', text: textToSend }]);
     setIsLoading(true);
 
-    const response = await getBaristaResponse(textToSend);
+    const response = await getConciergeResponse(textToSend);
     setMessages(prev => [...prev, { 
       role: 'model', 
       text: response.text,
@@ -80,7 +80,7 @@ const ChatBarista: React.FC = () => {
                 HB
               </div>
               <div>
-                <h4 className="text-white font-bold text-xs md:text-sm tracking-wide leading-none">Concierge</h4>
+                <h4 className="text-white font-bold text-xs md:text-sm tracking-wide leading-none">H Brothers Concierge</h4>
                 <span className="text-karak-secondary text-[7px] md:text-[8px] uppercase tracking-[0.2em] flex items-center gap-1 font-bold">
                   Flash Engine Active
                 </span>
@@ -178,4 +178,4 @@ const ChatBarista: React.FC = () => {
   );
 };
 
-export default ChatBarista;
+export default HBrothersConcierge;

@@ -8,7 +8,7 @@ import About from './components/About';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ChatBarista from './components/ChatBarista';
+import HBrothersConcierge from './components/HBrothersConcierge';
 
 const App: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ const App: React.FC = () => {
             } />
           </Routes>
         </main>
-        <ChatBarista />
+        <HBrothersConcierge />
         <Footer />
       </div>
     </HashRouter>
