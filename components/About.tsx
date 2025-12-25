@@ -5,13 +5,13 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-24 bg-[#FDF8F3] overflow-hidden relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Featured Visual - Positioned Above the 'Hearty Comfort' Heading */}
         <div className="relative mb-16 lg:mb-20">
           <div className="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-karak-accent opacity-20"></div>
           <div className="relative rounded-2xl shadow-2xl overflow-hidden group">
             <img
-              src="/images/about-interior.jpg"
+              src={`${import.meta.env.BASE_URL}images/about-interior.jpg`}
               alt="H Brothers restaurant interior in Downtown Escondido - warm family atmosphere"
               loading="lazy"
               className="w-full h-[300px] md:h-[450px] object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -19,7 +19,7 @@ const About: React.FC = () => {
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
-          
+
           {/* Floating Rating Badge */}
           <div className="absolute -bottom-8 right-4 md:right-12 bg-karak-primary p-6 md:p-10 rounded-2xl z-20 shadow-2xl border-b-4 border-karak-accent">
             <span className="text-karak-secondary font-black text-3xl md:text-5xl block mb-1 leading-none">4.8</span>
@@ -36,14 +36,17 @@ const About: React.FC = () => {
                 Hearty Comfort <br />
                 <span className="italic text-karak-accent">on Grand Ave</span>
               </h3>
-              <p className="text-karak-text font-lato text-xl leading-relaxed opacity-90 max-w-3xl">
-                As Escondido's top-rated destination for comfort food, H-Brothers brings hearty, homestyle cooking to the heart of downtown. Family recipes, generous portions, and a whole lot of love—served Tuesday through Saturday.
+              <p className="text-karak-text font-lato text-xl leading-relaxed opacity-90 max-w-3xl mb-6">
+                Founded by brothers <span className="text-karak-accent font-bold">Justin and Nick Hedayati</span>, H Brothers officially opened its doors in Escondido on <span className="font-bold">September 26, 2017</span>.
+              </p>
+              <p className="text-karak-text font-lato text-lg leading-relaxed opacity-80 max-w-2xl mb-6">
+                What began as a passion for handcrafted American comfort food has grown into a popular "anchor" of the downtown food scene on Grand Avenue. We bring homestyle cooking to the heart of the city with family recipes, generous portions, and a whole lot of love.
               </p>
               <p className="text-karak-text font-lato text-lg leading-relaxed opacity-70 max-w-2xl">
-                From our kitchen to your table, we believe in the power of a perfect meal to bring people together. Whether it's our signature smoked brisket or our crispy poutine, every bite tells a story of tradition and quality.
+                From our signature smoked brisket to our crispy poutine, every bite tells a story of tradition, quality, and the power of a perfect meal to bring people together.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 py-12 border-t border-gray-200">
               <div className="flex items-center gap-5 group">
                 <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-3xl shadow-sm border border-gray-100 transition-transform group-hover:rotate-6 group-hover:bg-karak-accent group-hover:text-white">👨‍🍳</div>
@@ -61,21 +64,41 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex gap-5 pt-4">
-              <a 
-                href="https://www.instagram.com/hbrothers_esco/" 
-                target="_blank" 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-gray-200 mt-12">
+              <div>
+                <h5 className="text-karak-primary font-black uppercase tracking-widest text-xs mb-4">Location</h5>
+                <p className="text-sm text-gray-500 mb-1">212 E Grand Ave</p>
+                <p className="text-sm text-gray-500">Escondido, CA 92025</p>
+              </div>
+              <div>
+                <h5 className="text-karak-primary font-black uppercase tracking-widest text-xs mb-4">Contact</h5>
+                <p className="text-sm text-gray-500 mb-1">(442) 999-5542</p>
+                <p className="text-sm text-gray-500">Find us in the heart of downtown</p>
+              </div>
+              <div>
+                <h5 className="text-karak-primary font-black uppercase tracking-widest text-xs mb-4">Hours</h5>
+                <p className="text-sm text-gray-500 mb-1">Tue - Thu: 11 AM – 9 PM</p>
+                <p className="text-sm text-gray-500 mb-1">Fri: 11 AM – 10 PM</p>
+                <p className="text-sm text-gray-500 mb-1">Sat: 11 AM – 9 PM</p>
+                <p className="text-sm text-gray-500">Sun - Mon: Closed</p>
+              </div>
+            </div>
+
+            <div className="flex gap-5 pt-12 border-t border-gray-200 mt-12">
+              <a
+                href="https://www.instagram.com/hbrothers_esco/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#E4405F] p-4 rounded-xl shadow-lg text-white hover:scale-105 transition-all transform hover:-translate-y-1 flex items-center justify-center"
                 aria-label="Follow us on Instagram"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               </a>
-              <a 
-                href="https://www.yelp.com/biz/h-brothers-escondido" 
-                target="_blank" 
+              <a
+                href="https://www.yelp.com/biz/h-brothers-escondido"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#D32323] p-4 rounded-xl shadow-lg text-white hover:scale-105 transition-all transform hover:-translate-y-1 flex items-center justify-center"
                 aria-label="See us on Yelp"

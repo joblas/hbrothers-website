@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   }, []);
 
   // Updated to the high-resolution brand image provided by the user
-  const HERO_IMAGE_URL = "/images/hero-bg.jpg";
+  const HERO_IMAGE_URL = `${import.meta.env.BASE_URL}images/hero-bg.jpg`;
 
   const contentOpacity = Math.max(0, 1 - scrollY / 600);
 

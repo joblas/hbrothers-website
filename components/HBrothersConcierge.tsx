@@ -1,22 +1,15 @@
-
 import React, { useState, useRef, useEffect } from 'react';
-import { getConciergeResponse } from '../services/geminiService';
-import { ChatMessage } from '../types';
+import { getChatResponse } from '../services/geminiService';
 
-interface ExtendedChatMessage extends ChatMessage {
-  sources?: { title: string; uri: string }[];
+interface Message {
+  role: 'user' | 'model';
+  text: string;
 }
-
-const SUGGESTIONS = [
-  "What's in the Brisket Mac?",
-  "Tell me about Poutine",
-  "Holiday hours?"
-];
 
 const HBrothersConcierge: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ExtendedChatMessage[]>([
-    { role: 'model', text: "Hey! Ready for some comfort food? Ask me about our 12-hour brisket!" }
+  const [messages, setMessages] = useState<Message[]>([
+    { role: 'model', text: "Hey there! 👋 I'm the H Brothers Concierge. Craving a burger or need directions? I'm here to help!" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -27,153 +20,114 @@ const HBrothersConcierge: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-    }
+    scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSend = async (textOverride?: string) => {
-    const textToSend = textOverride || input.trim();
-    if (!textToSend || isLoading) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
 
+    const userMessage = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', text: textToSend }]);
+    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
     setIsLoading(true);
 
-    const response = await getConciergeResponse(textToSend);
-    setMessages(prev => [...prev, { 
-      role: 'model', 
-      text: response.text,
-      sources: response.sources
-    }]);
-    setIsLoading(false);
+    try {
+      const responseText = await getChatResponse([], userMessage);
+      setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { role: 'model', text: "I'm having a bit of trouble hearing you. Could you say that again?" }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60]">
-      {/* Trigger Button - Scaled for Mobile */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 md:w-16 md:h-16 bg-karak-accent text-white rounded-full shadow-[0_10px_40px_-10px_rgba(192,64,0,0.5)] flex items-center justify-center hover:scale-105 transition-all active:scale-95 border-2 border-white"
-      >
-        {isOpen ? (
-          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <div className="relative">
-            <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-            </svg>
-            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-white border-2 border-karak-accent rounded-full animate-pulse"></span>
-          </div>
-        )}
-      </button>
-
-      {/* Chat Window - Responsive Width and Height */}
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      {/* Chat Window */}
       {isOpen && (
-        <div className="absolute bottom-16 md:bottom-20 right-0 w-[calc(100vw-2rem)] sm:w-[380px] h-[500px] md:h-[550px] max-h-[70vh] md:max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-5 duration-300">
-          {/* Header - Optimized Padding */}
-          <div className="bg-karak-primary p-4 md:p-5 flex items-center justify-between">
+        <div className="mb-4 w-[350px] h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-10">
+          {/* Header */}
+          <div className="bg-karak-primary p-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-karak-accent flex items-center justify-center text-white font-black shadow-inner text-xs md:text-sm">
-                HB
-              </div>
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xl">🤖</div>
               <div>
-                <h4 className="text-white font-bold text-xs md:text-sm tracking-wide leading-none">H Brothers Concierge</h4>
-                <span className="text-karak-secondary text-[7px] md:text-[8px] uppercase tracking-[0.2em] flex items-center gap-1 font-bold">
-                  Flash Engine Active
-                </span>
+                <h3 className="text-white font-bold text-sm">H Brothers Concierge</h3>
+                <p className="text-karak-accent text-[10px] uppercase tracking-wider">Powered by Google Gemini</p>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white transition-colors">
-              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white/60 hover:text-white transition-colors"
+              aria-label="Close chat"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
           </div>
 
-          {/* Messages - Responsive Spacing */}
-          <div className="flex-grow overflow-y-auto p-4 md:p-5 space-y-3 md:space-y-4 bg-[#FDF8F3]/30">
+          {/* Messages Area */}
+          <div className="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4">
             {messages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-1 duration-200`}>
-                <div className={`max-w-[90%] md:max-w-[85%] p-3 md:p-4 rounded-2xl text-xs md:text-sm leading-relaxed shadow-sm ${
-                  msg.role === 'user' 
-                    ? 'bg-karak-primary text-white font-medium rounded-tr-none' 
-                    : 'bg-white text-karak-text border border-gray-100 rounded-tl-none'
-                }`}>
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div
+                  className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${msg.role === 'user'
+                    ? 'bg-karak-primary text-white rounded-br-none'
+                    : 'bg-white text-gray-600 shadow-sm border border-gray-100 rounded-bl-none'
+                    }`}
+                >
                   {msg.text}
-                  
-                  {/* Web Sources */}
-                  {msg.sources && msg.sources.length > 0 && (
-                    <div className="mt-2 pt-2 border-t border-gray-100 space-y-1">
-                      <p className="text-[8px] md:text-[9px] uppercase tracking-widest text-gray-400 font-bold">Sources:</p>
-                      {msg.sources.map((source, sIdx) => (
-                        <a 
-                          key={sIdx} 
-                          href={source.uri} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="block text-[9px] md:text-[10px] text-karak-accent hover:underline truncate"
-                        >
-                          {source.title}
-                        </a>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white px-3 py-2 md:px-4 md:py-3 rounded-2xl text-gray-400 text-[10px] md:text-xs italic shadow-sm flex items-center gap-2 border border-gray-100 rounded-tl-none">
-                  <span className="flex gap-1">
-                    <span className="w-1 h-1 bg-karak-accent/40 rounded-full animate-bounce"></span>
-                    <span className="w-1 h-1 bg-karak-accent/40 rounded-full animate-bounce [animation-delay:0.1s]"></span>
-                    <span className="w-1 h-1 bg-karak-accent/40 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-                  </span>
-                  Prepping...
+                <div className="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm border border-gray-100 flex gap-1">
+                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-100"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-200"></div>
                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggested Chips - Scaled for Mobile */}
-          <div className="px-4 md:px-5 pb-3 md:pb-4 bg-[#FDF8F3]/30 flex flex-wrap gap-1.5 md:gap-2">
-            {messages.length === 1 && SUGGESTIONS.map((s) => (
-              <button
-                key={s}
-                onClick={() => handleSend(s)}
-                className="text-[8px] md:text-[9px] font-bold uppercase tracking-widest bg-white border border-gray-200 px-2.5 py-1.5 md:px-3 md:py-2 rounded-full hover:border-karak-accent hover:text-karak-accent transition-all active:scale-95 shadow-xs whitespace-nowrap"
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-
-          {/* Input Area - Optimized for Touch */}
-          <div className="p-4 md:p-5 border-t border-gray-100 bg-white">
+          {/* Input Area */}
+          <form onSubmit={handleSubmit} className="p-3 bg-white border-t border-gray-100">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask me anything..."
-                className="flex-grow border-none bg-gray-50 rounded-xl px-4 py-2.5 md:py-3 text-xs md:text-sm focus:ring-1 focus:ring-karak-accent transition-all outline-none"
+                placeholder="Ask about our brisket..."
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-karak-accent focus:bg-white transition-all"
+                aria-label="Message input"
               />
               <button
-                onClick={() => handleSend()}
-                disabled={isLoading}
-                className="bg-karak-primary text-white p-2.5 md:p-3 rounded-xl hover:bg-karak-accent transition-all active:scale-90 shadow-md disabled:opacity-50"
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="w-9 h-9 rounded-full bg-karak-accent text-karak-primary flex items-center justify-center hover:bg-karak-primary hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Send message"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
+                <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
             </div>
-          </div>
+          </form>
         </div>
       )}
+
+      {/* Toggle Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="group relative flex items-center justify-center w-14 h-14 bg-karak-primary text-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:scale-110 hover:bg-karak-accent hover:text-karak-primary transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-karak-accent/30"
+        aria-label={isOpen ? "Close concierge chat" : "Open concierge chat"}
+      >
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#D32323] rounded-full border-2 border-white"></div>
+        {isOpen ? (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        ) : (
+          <span className="text-2xl">💬</span>
+        )}
+      </button>
     </div>
   );
 };

@@ -4,7 +4,7 @@ export interface MenuItem {
   name: string;
   description: string;
   price: string;
-  category: 'coffee' | 'tea' | 'dessert' | 'savory';
+  category: 'coffee' | 'tea' | 'dessert' | 'savory' | 'sweet';
   imageUrl: string;
 }
 
@@ -17,5 +17,6 @@ export enum Category {
   Coffee = 'coffee',
   Tea = 'tea',
   Dessert = 'dessert',
-  Savory = 'savory'
+  Savory = 'savory',
+  Sweet = 'sweet'
 }
