@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   }, []);
 
   // Updated to the high-resolution brand image provided by the user
-  const HERO_IMAGE_URL = "https://s3-media0.fl.yelpcdn.com/bphoto/smFB-Ow4ime35qToNbgDcA/o.jpg";
+  const HERO_IMAGE_URL = "/images/hero-bg.jpg";
 
   const contentOpacity = Math.max(0, 1 - scrollY / 600);
 
@@ -63,15 +63,19 @@ const Hero: React.FC = () => {
           <div className="inline-flex items-center gap-4 mb-6">
             <div className="h-px w-12 bg-karak-secondary/40"></div>
             <p className="text-karak-secondary font-raleway uppercase tracking-[1em] text-[9px] md:text-[11px] font-black drop-shadow-lg">
-              Est. 2017
+              Est. 2017 • Escondido, CA
             </p>
             <div className="h-px w-12 bg-karak-secondary/40"></div>
           </div>
           
-          <h1 className="text-white font-playfair text-3xl md:text-6xl lg:text-7xl mb-10 font-bold tracking-tight leading-[1.1] drop-shadow-2xl">
+          <h1 className="text-white font-playfair text-3xl md:text-6xl lg:text-7xl mb-6 font-bold tracking-tight leading-[1.1] drop-shadow-2xl">
             Hearty <span className="italic text-karak-secondary font-medium">Comfort,</span><br />
             No Compromise.
           </h1>
+          
+          <p className="text-gray-200 font-raleway text-sm md:text-base tracking-widest uppercase font-medium mb-10 max-w-2xl mx-auto">
+            Voted Best Comfort Food in Downtown Escondido
+          </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
             <a

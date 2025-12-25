@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Menu from './components/Menu';
@@ -12,7 +12,7 @@ import HBrothersConcierge from './components/HBrothersConcierge';
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/HBrothers-Website">
       <div className="flex flex-col min-h-screen selection:bg-karak-accent selection:text-karak-primary">
         <Header />
         <main className="flex-grow">
@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <HBrothersConcierge />
         <Footer />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

@@ -11,8 +11,9 @@ const About: React.FC = () => {
           <div className="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-karak-accent opacity-20"></div>
           <div className="relative rounded-2xl shadow-2xl overflow-hidden group">
             <img
-              src="https://s3-media0.fl.yelpcdn.com/bphoto/k3GFsndzP0UX3xsnq4nRDg/o.jpg"
+              src="/images/about-interior.jpg"
               alt="H Brothers restaurant interior in Downtown Escondido - warm family atmosphere"
+              loading="lazy"
               className="w-full h-[300px] md:h-[450px] object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             {/* Subtle Gradient Overlay */}
@@ -36,7 +37,7 @@ const About: React.FC = () => {
                 <span className="italic text-karak-accent">on Grand Ave</span>
               </h3>
               <p className="text-karak-text font-lato text-xl leading-relaxed opacity-90 max-w-3xl">
-                H-Brothers brings hearty, homestyle comfort food to downtown Escondido. Family recipes, generous portions, and a whole lot of love—served Tuesday through Saturday.
+                As Escondido's top-rated destination for comfort food, H-Brothers brings hearty, homestyle cooking to the heart of downtown. Family recipes, generous portions, and a whole lot of love—served Tuesday through Saturday.
               </p>
               <p className="text-karak-text font-lato text-lg leading-relaxed opacity-70 max-w-2xl">
                 From our kitchen to your table, we believe in the power of a perfect meal to bring people together. Whether it's our signature smoked brisket or our crispy poutine, every bite tells a story of tradition and quality.

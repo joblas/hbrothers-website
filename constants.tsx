@@ -16,7 +16,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Our signature 12-hour smoked brisket served over a double-cream three-cheese blend mac. Limited availability!',
     price: '$16.95',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/WM0m_NzTkfx8c7dw1uZL9Q/o.jpg'
+    imageUrl: '/images/menu-special-brisket.jpg'
   },
   {
     id: 'classic-1',
@@ -24,7 +24,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Half-pound Angus beef, melted cheddar, secret sauce on a toasted brioche bun.',
     price: '$14.95',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/t2ZYbdY6mrWLdMPvVvxMAw/o.jpg'
+    imageUrl: '/images/item-classic-burger.jpg'
   },
   {
     id: 'classic-2',
@@ -32,7 +32,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Crispy fries, fresh cheese curds, and our signature savory gravy. A North American favorite.',
     price: '$11.50',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/pp8QvBJQ0D5IYYXmjkSsRQ/o.jpg'
+    imageUrl: '/images/item-poutine.jpg'
   },
   {
     id: 'classic-3',
@@ -40,7 +40,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Crispy fried chicken, pickles, spicy mayo on a brioche bun. Simple and perfect.',
     price: '$13.50',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/TAp3fqEoqkcFZRP2L6gPdQ/o.jpg'
+    imageUrl: '/images/item-chicken-sandwich.jpg'
   },
   {
     id: 'classic-4',
@@ -48,7 +48,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Tender chicken breast with a golden parmesan crust, served with fresh seasonal sides.',
     price: '$15.95',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/MduKpfHeZmhoDamfVRBdPA/o.jpg'
+    imageUrl: '/images/item-parmesan-chicken.jpg'
   },
   {
     id: 'classic-5',
@@ -56,7 +56,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Crispy fries topped with bacon, melted cheese, and fresh green onions.',
     price: '$10.95',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/jYFosx3iJKZRDo_AYuQ48Q/o.jpg'
+    imageUrl: '/images/item-loaded-fries.jpg'
   },
   {
     id: 'classic-6',
@@ -64,7 +64,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Crispy fried shrimp with lettuce, tomato, and remoulade sauce.',
     price: '$15.25',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/P8M08juX0YEHwiYPDFDGOw/o.jpg'
+    imageUrl: '/images/item-shrimp-poboy.jpg'
   },
   {
     id: 'classic-7',
@@ -72,7 +72,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Creamy three-cheese blend with a toasted breadcrumb topping.',
     price: '$9.95',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/Ndhdl38cPT3P_Hl8E8Ea0w/o.jpg'
+    imageUrl: '/images/item-mac-cheese.jpg'
   },
   {
     id: 'classic-8',
@@ -80,6 +80,6 @@ export const MENU_ITEMS: MenuItem[] = [
     description: 'Spicy buffalo chicken with ranch, lettuce, and cheese.',
     price: '$13.25',
     category: 'savory',
-    imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/tExy5bjxARm9eQZYxHYPkw/o.jpg'
+    imageUrl: '/images/item-buffalo-wrap.jpg'
   }
 ];

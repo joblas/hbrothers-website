@@ -75,10 +75,10 @@ const Header: React.FC = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-10 items-center">
-              <button onClick={() => scrollIntoView('hero')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors">Home</button>
-              <button onClick={() => scrollIntoView('menu')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors">Menu</button>
-              <button onClick={() => scrollIntoView('about')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors">About</button>
-              <button onClick={() => scrollIntoView('contact')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors">Find Us</button>
+              <button onClick={() => scrollIntoView('hero')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent rounded-sm px-1">Home</button>
+              <button onClick={() => scrollIntoView('menu')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent rounded-sm px-1">Menu</button>
+              <button onClick={() => scrollIntoView('about')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent rounded-sm px-1">About</button>
+              <button onClick={() => scrollIntoView('contact')} className="text-karak-primary font-bold tracking-wider uppercase text-[10px] hover:text-karak-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent rounded-sm px-1">Find Us</button>
               
               <div className="h-4 w-px bg-gray-200"></div>
               
@@ -123,7 +123,8 @@ const Header: React.FC = () => {
             <div className="md:hidden flex items-center">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-karak-primary hover:text-karak-accent"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                className="inline-flex items-center justify-center p-2 rounded-md text-karak-primary hover:text-karak-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-karak-accent"
               >
                 <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path className={isMenuOpen ? 'hidden' : 'inline-flex'} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />

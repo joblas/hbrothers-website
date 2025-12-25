@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
               color="#FFFFFF"
               mode="horizontal"
             />
-            <p className="text-gray-400 text-sm leading-relaxed text-center md:text-left">
+            <p className="text-gray-300 text-sm leading-relaxed text-center md:text-left">
               Serving homestyle comfort food to downtown Escondido. Family recipes, generous portions, and a whole lot of love since our start on Grand Ave.
             </p>
             <div className="flex space-x-5">
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
                 href="https://www.instagram.com/hbrothers_esco/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#E4405F] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(228,64,95,0.4)] transition-all"
+                className="w-10 h-10 rounded-xl bg-[#E4405F] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(228,64,95,0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-white"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                 href="https://www.yelp.com/biz/h-brothers-escondido" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#D32323] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(211,35,35,0.4)] transition-all"
+                className="w-10 h-10 rounded-xl bg-[#D32323] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(211,35,35,0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-white"
                 aria-label="Yelp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
           {/* Contact Column */}
           <div className="flex flex-col items-center md:items-start">
             <h5 className="text-karak-accent font-bold uppercase tracking-widest text-[10px] mb-8">Visit Us</h5>
-            <ul className="space-y-4 text-gray-400 text-xs text-center md:text-left">
+            <ul className="space-y-4 text-gray-300 text-xs text-center md:text-left">
               <li className="leading-relaxed">212 E. Grand Ave<br />Escondido, CA 92025</li>
               <li className="font-bold text-white tracking-widest">(442) 999-5542</li>
               <li>Tue - Sat: 11am - 9pm</li>
