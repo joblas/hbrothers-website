@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { MENU_ITEMS } from "../constants";
 import { MenuItem, ConversationContext } from "../types";
+import siteContent from '../content.json';
 
 // Initialize the API
 const API_KEY = (import.meta.env.VITE_GEMINI_API_KEY || "").trim();
@@ -9,12 +10,7 @@ console.log("[Gemini] API Key present:", !!API_KEY);
 console.log("[Gemini] API Key prefix:", API_KEY ? API_KEY.substring(0, 8) + "..." : "none");
 
 // Restaurant information
-export const RESTAURANT_INFO = {
-  name: "H Brothers",
-  address: "212 E. Grand Ave, Escondido, CA 92025",
-  phone: "(442) 999-5542",
-  orderUrl: "https://www.hbrotherstogo.com/"
-};
+export const RESTAURANT_INFO = siteContent.restaurant;
 
 // Quick actions for the chat
 export const QUICK_ACTIONS = [
@@ -26,13 +22,7 @@ export const QUICK_ACTIONS = [
 ];
 
 // Current promotion
-export const CURRENT_PROMOTION = {
-  id: 'promo-1',
-  title: 'Try Our Famous Brisket!',
-  description: '12-hour smoked brisket, limited daily availability. Get it before it sells out!',
-  menuItemId: 'special-1',
-  isActive: true
-};
+export const CURRENT_PROMOTION = siteContent.promotion;
 
 // System prompt
 const SYSTEM_PROMPT = `You are the H Brothers Concierge, a friendly AI assistant for H Brothers restaurant in Escondido, CA.

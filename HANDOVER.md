@@ -15,14 +15,21 @@ The chatbot is powered by Google Gemini. To keep it running, you need a Google C
 *   The **Gemini 1.5 Flash** model has a very generous free tier that should easily cover a local restaurant's traffic.
 *   If you ever exceed the free tier, the chatbot will show a "connecting to kitchen" fallback message instead of crashing.
 
-## 2. Updating the Menu
-The menu items shown on the site and known by the AI are stored in a single file for easy management.
+## 2. Updating Content (Menu, Promotions, Hours)
+All editable content is stored in a single file called `content.json`. This allows you to update the site without touching complex code.
 
-*   **File Path:** `constants.tsx`
-*   **How to update:** 
-    1.  Open `constants.tsx`.
-    2.  Edit the `MENU_ITEMS` array. You can change prices, descriptions, or add new items.
-    3.  The AI will automatically "learn" the new menu the next time the site is built and deployed.
+*   **File Path:** `content.json`
+*   **What you can change:**
+    *   **Menu:** Update prices, descriptions, and item names.
+    *   **Promotions:** Change the "1" badge alert, title, and description for your current special.
+    *   **Restaurant Info:** Update your hours, phone number, or ordering link.
+    
+### How to update:
+1.  Open `content.json` in your editor (or directly on GitHub).
+2.  Find the text you want to change (e.g., the price of the "Classic Burger").
+3.  Type the new price between the quotation marks.
+4.  **Important:** Be careful not to delete any commas `,` or curly braces `{}` as these are required for the file to work.
+5.  Save and **Deploy** the site to see changes live.
 
 ## 3. Deployment (Updating the Live Site)
 The site is configured to deploy to **GitHub Pages**.

@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import siteContent from '../content.json';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showAnnouncement, setShowAnnouncement] = useState(true);
+  const [showAnnouncement, setShowAnnouncement] = useState(siteContent.announcement.isActive);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +50,7 @@ const Header: React.FC = () => {
       {showAnnouncement && (
         <div className="bg-karak-accent text-white py-2 px-4 relative flex items-center justify-center text-center">
           <p className="text-xs sm:text-sm font-medium tracking-wide">
-            📢 We will be closed for the Holiday from Dec 23rd - 25th. Merry Christmas!
+            {siteContent.announcement.text}
           </p>
           <button 
             onClick={() => setShowAnnouncement(false)}
@@ -84,7 +85,7 @@ const Header: React.FC = () => {
               {/* Social Icons Integrated into Nav with Pop colors */}
               <div className="flex items-center gap-5">
                 <a 
-                  href="https://www.instagram.com/hbrothers_esco/" 
+                  href={siteContent.restaurant.instagramUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#E4405F] hover:scale-110 active:scale-95 transition-all drop-shadow-sm"
@@ -93,7 +94,7 @@ const Header: React.FC = () => {
                   <InstagramIcon />
                 </a>
                 <a 
-                  href="https://www.yelp.com/biz/h-brothers-escondido" 
+                  href={siteContent.restaurant.yelpUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#D32323] hover:scale-110 active:scale-95 transition-all drop-shadow-sm flex items-center justify-center"
@@ -108,12 +109,12 @@ const Header: React.FC = () => {
             <div className="hidden md:flex items-center gap-6">
               <div className="flex flex-col items-end">
                 <div className="flex items-center gap-1">
-                  <span className="text-xs font-bold text-karak-primary">★ 4.8</span>
+                  <span className="text-xs font-bold text-karak-primary">★ {siteContent.restaurant.yelpRating}</span>
                   <div className="flex text-yellow-500"><span className="text-[10px]">★★★★★</span></div>
                 </div>
-                <a href="https://www.yelp.com/biz/h-brothers-escondido" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest font-bold text-gray-400 hover:text-[#D32323]">500+ Reviews</a>
+                <a href={siteContent.restaurant.yelpUrl} target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest font-bold text-gray-400 hover:text-[#D32323]">{siteContent.restaurant.yelpReviewCount} Reviews</a>
               </div>
-              <a href="https://www.hbrotherstogo.com/" target="_blank" rel="noopener noreferrer" className="bg-karak-primary text-karak-accent px-6 py-2.5 rounded-karak text-[10px] font-bold uppercase tracking-widest hover:bg-karak-accent hover:text-white transition-all active:scale-95 shadow-lg">
+              <a href={siteContent.restaurant.orderUrl} target="_blank" rel="noopener noreferrer" className="bg-karak-primary text-karak-accent px-6 py-2.5 rounded-karak text-[10px] font-bold uppercase tracking-widest hover:bg-karak-accent hover:text-white transition-all active:scale-95 shadow-lg">
                 Order Now
               </a>
             </div>
@@ -143,16 +144,16 @@ const Header: React.FC = () => {
             <button onClick={() => scrollIntoView('contact')} className="block w-full px-3 py-4 text-[10px] font-bold text-karak-primary uppercase tracking-widest border-b border-gray-50">Find Us</button>
             
             <div className="flex justify-center gap-10 py-6">
-              <a href="https://www.instagram.com/hbrothers_esco/" target="_blank" rel="noopener noreferrer" className="text-[#E4405F]">
+              <a href={siteContent.restaurant.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[#E4405F]">
                 <InstagramIcon />
               </a>
-              <a href="https://www.yelp.com/biz/h-brothers-escondido" target="_blank" rel="noopener noreferrer" className="text-[#D32323]">
+              <a href={siteContent.restaurant.yelpUrl} target="_blank" rel="noopener noreferrer" className="text-[#D32323]">
                 <YelpIcon />
               </a>
             </div>
 
             <div className="pt-4 px-4">
-              <a href="https://www.hbrotherstogo.com/" target="_blank" rel="noopener noreferrer" className="block w-full bg-karak-primary text-karak-accent py-4 rounded-karak text-[10px] font-bold uppercase tracking-widest text-center">Order Online</a>
+              <a href={siteContent.restaurant.orderUrl} target="_blank" rel="noopener noreferrer" className="block w-full bg-karak-primary text-karak-accent py-4 rounded-karak text-[10px] font-bold uppercase tracking-widest text-center">Order Online</a>
             </div>
           </div>
         </div>

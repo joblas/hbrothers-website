@@ -167,6 +167,7 @@ const HBrothersConcierge: React.FC = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [showPromotion, setShowPromotion] = useState(CURRENT_PROMOTION.isActive);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [notificationSeen, setNotificationSeen] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -180,8 +181,11 @@ const HBrothersConcierge: React.FC = () => {
 
   // Start analytics session when chat opens
   useEffect(() => {
-    if (isOpen && !hasInteracted) {
-      startSession();
+    if (isOpen) {
+      setNotificationSeen(true);
+      if (!hasInteracted) {
+        startSession();
+      }
     }
   }, [isOpen, hasInteracted]);
 
@@ -448,7 +452,7 @@ const HBrothersConcierge: React.FC = () => {
         aria-label={isOpen ? "Close concierge chat" : "Open concierge chat"}
       >
         {/* Notification Badge */}
-        {!isOpen && CURRENT_PROMOTION.isActive && (
+        {!isOpen && CURRENT_PROMOTION.isActive && !notificationSeen && (
           <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white flex items-center justify-center animate-pulse">
             <span className="text-[10px] text-white font-bold">1</span>
           </div>

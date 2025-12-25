@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Logo from './Logo';
+import siteContent from '../content.json';
 
 const Footer: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-5">
               <a 
-                href="https://www.instagram.com/hbrothers_esco/" 
+                href={siteContent.restaurant.instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-[#E4405F] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(228,64,95,0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-white"
@@ -29,7 +30,7 @@ const Footer: React.FC = () => {
                 </svg>
               </a>
               <a 
-                href="https://www.yelp.com/biz/h-brothers-escondido" 
+                href={siteContent.restaurant.yelpUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-[#D32323] flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_0_15px_rgba(211,35,35,0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-white"
@@ -46,10 +47,9 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="text-karak-accent font-bold uppercase tracking-widest text-[10px] mb-8">Visit Us</h5>
             <ul className="space-y-4 text-gray-300 text-xs text-center md:text-left">
-              <li className="leading-relaxed">212 E. Grand Ave<br />Escondido, CA 92025</li>
-              <li className="font-bold text-white tracking-widest">(442) 999-5542</li>
-              <li>Tue - Sat: 11am - 9pm</li>
-              <li className="text-karak-accent opacity-50 italic">Closed Sun & Mon</li>
+              <li className="leading-relaxed">{siteContent.restaurant.address}</li>
+              <li className="font-bold text-white tracking-widest">{siteContent.restaurant.phone}</li>
+              <li>{siteContent.restaurant.hours}</li>
             </ul>
           </div>
 
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="text-karak-accent font-bold uppercase tracking-widest text-[10px] mb-8">Stay Fed</h5>
             <p className="text-gray-400 text-xs mb-6 text-center md:text-left">Order for pick-up or delivery and bring the comfort home.</p>
-            <a href="https://www.hbrotherstogo.com/" target="_blank" rel="noopener noreferrer" aria-label="Order H Brothers food online for pickup" className="block w-full max-w-xs bg-karak-accent text-karak-primary py-4 rounded-karak font-bold uppercase tracking-widest text-[10px] text-center hover:bg-white transition-all shadow-lg mb-3">
+            <a href={siteContent.restaurant.orderUrl} target="_blank" rel="noopener noreferrer" aria-label="Order H Brothers food online for pickup" className="block w-full max-w-xs bg-karak-accent text-karak-primary py-4 rounded-karak font-bold uppercase tracking-widest text-[10px] text-center hover:bg-white transition-all shadow-lg mb-3">
               Order Online
             </a>
             <a href="https://hbrothers.dine.online/" target="_blank" rel="noopener noreferrer" aria-label="Get H Brothers food delivered" className="block w-full max-w-xs border border-white/20 text-white py-4 rounded-karak font-bold uppercase tracking-widest text-[10px] text-center hover:bg-white/10 transition-all">
