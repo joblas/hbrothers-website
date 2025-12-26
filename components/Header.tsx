@@ -1,13 +1,28 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import siteContent from '../content.json';
+import { getActiveHoliday } from '../config/holidays';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showAnnouncement, setShowAnnouncement] = useState(siteContent.announcement.isActive);
+
+  // Determine announcement message: holiday takes priority, then default from content.json
+  const announcementMessage = useMemo(() => {
+    const activeHoliday = getActiveHoliday();
+    if (activeHoliday) {
+      return activeHoliday.message;
+    }
+    // Fall back to default announcement if active
+    if (siteContent.announcement.isActive && siteContent.announcement.text) {
+      return siteContent.announcement.text;
+    }
+    return null;
+  }, []);
+
+  const [showAnnouncement, setShowAnnouncement] = useState(!!announcementMessage);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,10 +62,10 @@ const Header: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Announcement Banner */}
-      {showAnnouncement && (
+      {showAnnouncement && announcementMessage && (
         <div className="bg-karak-accent text-white py-2 px-4 relative flex items-center justify-center text-center">
           <p className="text-xs sm:text-sm font-medium tracking-wide">
-            {siteContent.announcement.text}
+            {announcementMessage}
           </p>
           <button 
             onClick={() => setShowAnnouncement(false)}

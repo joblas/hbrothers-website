@@ -11,8 +11,8 @@
     "yelpReviewCount": "500+"
   },
   "announcement": {
-    "text": "📢 We will be closed for the Holiday from Dec 23rd - 25th. Merry Christmas!",
-    "isActive": true
+    "text": "",
+    "isActive": false
   },
   "promotion": {
     "id": "promo-1",
