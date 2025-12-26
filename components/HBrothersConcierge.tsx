@@ -15,35 +15,75 @@ import { ChatMessage, ConversationContext, MenuItem } from '../types';
 
 // --- Components ---
 
-// Simplified Menu Item Card
+// Premium Menu Item Card
 const MenuItemCard: React.FC<{
   item: MenuItem;
   onOrder: () => void;
-}> = ({ item, onOrder }) => (
-  <div className="bg-white rounded-xl shadow-sm border border-gray-100 min-w-[200px] w-[200px] flex-shrink-0 overflow-hidden hover:shadow-md transition-all duration-300 group">
-    <div className="h-20 bg-gradient-to-br from-karak-primary/5 to-karak-primary/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-      <span className="text-3xl filter drop-shadow-sm">
-        {item.category === 'specials' ? '⭐' :
-          item.category === 'sandwiches' ? '🥪' :
-            item.category === 'sides' ? '🍟' :
-              item.category === 'starters' ? '🥗' : '🍔'}
-      </span>
-    </div>
-    <div className="p-3">
-      <div className="flex justify-between items-start mb-1">
-        <h4 className="font-bold text-xs text-gray-800 leading-tight">{item.name}</h4>
-        <span className="text-karak-primary font-bold text-xs whitespace-nowrap ml-2">{item.price}</span>
+}> = ({ item, onOrder }) => {
+  // Map items to curated food images
+  const getItemImage = (name: string): string => {
+    const images: Record<string, string> = {
+      'Brisket Mac & Cheese': 'https://s3-media0.fl.yelpcdn.com/bphoto/aJOLmBCP1bBlCvPjqLG6sw/o.jpg',
+      'Classic Burger': 'https://s3-media0.fl.yelpcdn.com/bphoto/F5futODKSy8MzMjTZaFadA/o.jpg',
+      'Original Poutine': 'https://s3-media0.fl.yelpcdn.com/bphoto/zRxhaZPNqRylbu8AiVTdvQ/o.jpg',
+      'Chicken Sandwich': 'https://s3-media0.fl.yelpcdn.com/bphoto/JORb6rTEjwk4VwJq0L68tA/o.jpg',
+      'Parmesan Chicken': 'https://s3-media0.fl.yelpcdn.com/bphoto/AZB7dYVf_fHqCqk6MaVYaQ/o.jpg',
+      'Loaded Fries': 'https://s3-media0.fl.yelpcdn.com/bphoto/gD9I0wj4j0n0k2VYFfK1rw/o.jpg',
+      'Shrimp Po-Boy': 'https://s3-media0.fl.yelpcdn.com/bphoto/OQvJqE2qi1SdYZNj4Qhq4g/o.jpg',
+      'Mac & Cheese': 'https://s3-media0.fl.yelpcdn.com/bphoto/Qx_J6sv6BFxPvP0i3r7hjw/o.jpg',
+      'Buffalo Chicken Wrap': 'https://s3-media0.fl.yelpcdn.com/bphoto/vb7GqNz6e4J1qYxfzrLi_A/o.jpg',
+    };
+    return images[name] || 'https://s3-media0.fl.yelpcdn.com/bphoto/RoDrT6UTCt1QeWMkcfH5bw/o.jpg';
+  };
+
+  const isSpecial = item.category === 'specials';
+
+  return (
+    <div className={`relative min-w-[220px] w-[220px] flex-shrink-0 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer ${isSpecial ? 'ring-2 ring-amber-400/50' : ''}`}>
+      {/* Food Image */}
+      <div className="relative h-32 overflow-hidden">
+        <img
+          src={getItemImage(item.name)}
+          alt={item.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+        {/* Special badge */}
+        {isSpecial && (
+          <div className="absolute top-2 left-2 bg-amber-400 text-amber-900 text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full shadow-lg">
+            Chef's Special
+          </div>
+        )}
+
+        {/* Price tag */}
+        <div className="absolute top-2 right-2 bg-white/95 backdrop-blur-sm text-karak-primary font-black text-sm px-2.5 py-1 rounded-lg shadow-lg">
+          {item.price}
+        </div>
+
+        {/* Item name on image */}
+        <div className="absolute bottom-0 left-0 right-0 p-3">
+          <h4 className="font-bold text-white text-sm leading-tight drop-shadow-lg">{item.name}</h4>
+        </div>
       </div>
-      <p className="text-[10px] text-gray-500 line-clamp-2 mb-2 leading-relaxed">{item.description}</p>
-      <button
-        onClick={onOrder}
-        className="w-full bg-white text-karak-primary border border-karak-primary text-[10px] font-bold py-1.5 rounded-lg hover:bg-karak-primary hover:text-white transition-all uppercase tracking-wide"
-      >
-        Order Now
-      </button>
+
+      {/* Content */}
+      <div className="bg-white p-3">
+        <p className="text-[11px] text-gray-600 line-clamp-2 mb-3 leading-relaxed">{item.description}</p>
+        <button
+          onClick={onOrder}
+          className="w-full bg-karak-primary text-white text-[11px] font-bold py-2.5 rounded-xl hover:bg-karak-accent transition-all duration-300 uppercase tracking-wider shadow-md hover:shadow-lg active:scale-[0.98] flex items-center justify-center gap-2"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Order Now
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Helper to convert URLs to clickable links
 const formatMessageWithLinks = (text: string, isUser: boolean): React.ReactNode => {
