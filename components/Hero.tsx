@@ -30,8 +30,8 @@ const Hero: React.FC = () => {
           src={HERO_IMAGE_URL}
           alt="H Brothers restaurant in Downtown Escondido - warm interior with cozy ambiance serving hearty comfort food"
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-contain object-center transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+          className={`w-full h-full transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
         />
 
         {/* Overlays for depth and readability */}
