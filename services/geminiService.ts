@@ -6,9 +6,6 @@ import siteContent from '../content.json';
 // Initialize the API
 const API_KEY = (import.meta.env.VITE_GEMINI_API_KEY || "").trim();
 
-console.log("[Gemini] API Key present:", !!API_KEY);
-console.log("[Gemini] API Key prefix:", API_KEY ? API_KEY.substring(0, 8) + "..." : "none");
-
 // Restaurant information
 export const RESTAURANT_INFO = siteContent.restaurant;
 
@@ -153,10 +150,8 @@ export const getChatResponse = async (
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
     const fullPrompt = `${SYSTEM_PROMPT}\n\nCustomer says: "${userMessage}"\n\nRespond as the H Brothers Concierge:`;
 
-    console.log("[Gemini] Sending request...");
     const result = await model.generateContent(fullPrompt);
     const responseText = result.response.text();
-    console.log("[Gemini] Got response");
 
     const menuItems = detectMenuItems(responseText);
     const suggestedReplies = generateSuggestedReplies(responseText, ctx);

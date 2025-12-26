@@ -14,7 +14,8 @@
       "Bash(gh run list:*)",
       "Bash(gh api:*)",
       "WebFetch(domain:hbrothers.net)",
-      "WebFetch(domain:www.times-advocate.com)"
+      "WebFetch(domain:www.times-advocate.com)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
