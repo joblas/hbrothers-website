@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => {
 
     return {
       base: '/hbrothers-website/',
+      build: {
+        outDir: 'docs',
+      },
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -25,7 +28,7 @@ export default defineConfig(({ mode }) => {
         {
           name: 'copy-404',
           closeBundle() {
-            fs.copyFileSync('dist/index.html', 'dist/404.html');
+            fs.copyFileSync('docs/index.html', 'docs/404.html');
           }
         }
       ],
