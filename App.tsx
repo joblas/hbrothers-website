@@ -9,6 +9,8 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import HBrothersConcierge from './components/HBrothersConcierge';
+import StickyMobileCTA from './components/StickyMobileCTA';
+import BeerSection from './components/BeerSection';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,7 @@ const App: React.FC = () => {
                   <About />
                 </div>
                 <Testimonials />
+                <BeerSection />
                 <div id="contact">
                   <Contact />
                 </div>
@@ -36,6 +39,7 @@ const App: React.FC = () => {
         </main>
         <HBrothersConcierge />
         <Footer />
+        <StickyMobileCTA />
       </div>
     </BrowserRouter>
   );

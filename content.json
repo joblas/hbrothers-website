@@ -28,7 +28,7 @@
       "description": "Our signature 12-hour smoked brisket served over a double-cream three-cheese blend mac. Limited availability!",
       "price": "$16.95",
       "category": "specials",
-      "imageName": "menu-special-brisket.jpg"
+      "imageName": "menu-special-brisket.webp"
     },
     {
       "id": "classic-1",
@@ -36,15 +36,15 @@
       "description": "Half-pound Angus beef, melted cheddar, secret sauce on a toasted brioche bun.",
       "price": "$14.95",
       "category": "entrees",
-      "imageName": "item-classic-burger.jpg"
+      "imageName": "item-classic-burger.webp"
     },
     {
       "id": "classic-2",
       "name": "Original Poutine",
       "description": "Crispy fries, fresh cheese curds, and our signature savory gravy. A North American favorite.",
-      "price": "$11.50",
+      "price": "$11.99+",
       "category": "starters",
-      "imageName": "item-poutine.jpg"
+      "imageName": "item-poutine.webp"
     },
     {
       "id": "classic-3",
@@ -52,7 +52,7 @@
       "description": "Crispy fried chicken, pickles, spicy mayo on a brioche bun. Simple and perfect.",
       "price": "$13.50",
       "category": "sandwiches",
-      "imageName": "item-chicken-sandwich.jpg"
+      "imageName": "item-chicken-sandwich.webp"
     },
     {
       "id": "classic-4",
@@ -60,7 +60,7 @@
       "description": "Tender chicken breast with a golden parmesan crust, served with fresh seasonal sides.",
       "price": "$15.95",
       "category": "entrees",
-      "imageName": "item-parmesan-chicken.jpg"
+      "imageName": "item-parmesan-chicken.webp"
     },
     {
       "id": "classic-5",
@@ -68,7 +68,7 @@
       "description": "Crispy fries topped with bacon, melted cheese, and fresh green onions.",
       "price": "$10.95",
       "category": "sides",
-      "imageName": "item-loaded-fries.jpg"
+      "imageName": "item-loaded-fries.webp"
     },
     {
       "id": "classic-6",
@@ -76,7 +76,7 @@
       "description": "Crispy fried shrimp with lettuce, tomato, and remoulade sauce.",
       "price": "$15.25",
       "category": "sandwiches",
-      "imageName": "item-shrimp-poboy.jpg"
+      "imageName": "item-shrimp-poboy.webp"
     },
     {
       "id": "classic-7",
@@ -84,7 +84,7 @@
       "description": "Creamy three-cheese blend with a toasted breadcrumb topping.",
       "price": "$9.90",
       "category": "sides",
-      "imageName": "item-mac-cheese.jpg"
+      "imageName": "item-mac-cheese.webp"
     },
     {
       "id": "classic-8",
@@ -92,7 +92,87 @@
       "description": "Spicy buffalo chicken with ranch, lettuce, and cheese.",
       "price": "$13.25",
       "category": "sandwiches",
-      "imageName": "item-buffalo-wrap.jpg"
+      "imageName": "item-buffalo-wrap.webp"
+    },
+    {
+      "id": "classic-9",
+      "name": "H Bros Cheesesteak",
+      "description": "Philly-style cheesesteak with thinly sliced ribeye, melted provolone, and caramelized onions.",
+      "price": "$19.50",
+      "category": "sandwiches",
+      "imageName": "item-brisket-sandwich.webp"
+    },
+    {
+      "id": "classic-10",
+      "name": "Brisket Sandwich",
+      "description": "Tender smoked brisket piled high with tangy slaw and BBQ sauce on a toasted brioche.",
+      "price": "$19.20",
+      "category": "sandwiches",
+      "imageName": "item-brisket-sandwich.webp"
+    },
+    {
+      "id": "classic-11",
+      "name": "Buffalo Ranch Wrap",
+      "description": "Crispy buffalo chicken with cool ranch, lettuce, tomato, and shredded cheese in a flour tortilla.",
+      "price": "$15.60",
+      "category": "sandwiches",
+      "imageName": "item-buffalo-wrap.webp"
+    },
+    {
+      "id": "classic-12",
+      "name": "Adobada Fries",
+      "description": "Crispy fries topped with marinated adobada pork, cheese, sour cream, and fresh cilantro.",
+      "price": "$17.99",
+      "category": "starters",
+      "imageName": "item-loaded-fries.webp"
+    },
+    {
+      "id": "classic-13",
+      "name": "Parmesan Crusted Chicken",
+      "description": "Golden parmesan-crusted chicken breast served with garlic mashed potatoes and seasonal vegetables.",
+      "price": "$17.99",
+      "category": "sandwiches",
+      "imageName": "item-parmesan-chicken.webp"
+    },
+    {
+      "id": "classic-14",
+      "name": "Seafood Melt",
+      "description": "Grilled seafood medley with melted Swiss cheese on toasted sourdough.",
+      "price": "$20.40",
+      "category": "sandwiches",
+      "imageName": "item-shrimp-poboy.webp"
+    },
+    {
+      "id": "classic-15",
+      "name": "Tzatziki Chicken Wrap",
+      "description": "Grilled chicken with creamy tzatziki, cucumbers, tomatoes, and feta in a warm pita wrap.",
+      "price": "$15.60",
+      "category": "sandwiches",
+      "imageName": "item-buffalo-wrap.webp"
+    },
+    {
+      "id": "classic-16",
+      "name": "Chicken Caesar Wrap",
+      "description": "Grilled chicken, crisp romaine, parmesan, and Caesar dressing in a flour tortilla.",
+      "price": "$15.60",
+      "category": "sandwiches",
+      "imageName": "item-buffalo-wrap.webp"
+    },
+    {
+      "id": "classic-17",
+      "name": "Deep Fried Pickles",
+      "description": "Crispy breaded pickle spears served with ranch dipping sauce.",
+      "price": "$12.50",
+      "category": "starters",
+      "imageName": "item-hush-puppies.webp"
+    },
+    {
+      "id": "classic-18",
+      "name": "Truffle Fries",
+      "description": "Crispy fries tossed in truffle oil and parmesan with fresh herbs.",
+      "price": "$11.50",
+      "category": "sides",
+      "imageName": "item-loaded-fries.webp"
     }
   ]
 }

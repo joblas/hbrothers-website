@@ -24,7 +24,7 @@ const Menu: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="h-[400px] overflow-hidden">
                 <img
-                  src={`${import.meta.env.BASE_URL}images/menu-special-brisket.jpg`}
+                  src={`${import.meta.env.BASE_URL}images/menu-special-brisket.webp`}
                   alt="H Brothers Brisket Mac & Cheese - 12-hour smoked brisket over creamy three-cheese mac"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -108,7 +108,7 @@ const Menu: React.FC = () => {
           <div className="relative max-w-5xl mx-auto rounded-karak overflow-hidden shadow-2xl border border-white group">
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <img
-              src={`${import.meta.env.BASE_URL}images/menu-spread.jpg`}
+              src={`${import.meta.env.BASE_URL}images/menu-spread.webp`}
               alt="H Brothers comfort food spread featuring hearty American classics in Escondido"
               loading="lazy"
               className="w-full h-[450px] object-cover grayscale-[0.2] contrast-[1.05] transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"

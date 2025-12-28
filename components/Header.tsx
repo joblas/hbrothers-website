@@ -4,22 +4,41 @@ import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import siteContent from '../content.json';
 import { getActiveHoliday } from '../config/holidays';
+import { getDayStatus } from '../services/logisticsService';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Determine announcement message: holiday takes priority, then default from content.json
-  const announcementMessage = useMemo(() => {
+  // Determine announcement message: closed status takes priority, then holiday, then daily special, then default
+  const { announcementMessage, announcementType } = useMemo(() => {
+    const dayStatus = getDayStatus();
+
+    // Closed days take highest priority
+    if (dayStatus.isClosed && dayStatus.closedMessage) {
+      return { announcementMessage: dayStatus.closedMessage, announcementType: 'closed' as const };
+    }
+
+    // Then check for holidays
     const activeHoliday = getActiveHoliday();
     if (activeHoliday) {
-      return activeHoliday.message;
+      return { announcementMessage: activeHoliday.message, announcementType: 'holiday' as const };
     }
+
+    // Then check for daily specials
+    if (dayStatus.activeSpecial) {
+      return {
+        announcementMessage: `${dayStatus.activeSpecial.title}: ${dayStatus.activeSpecial.description}`,
+        announcementType: 'special' as const
+      };
+    }
+
     // Fall back to default announcement if active
     if (siteContent.announcement.isActive && siteContent.announcement.text) {
-      return siteContent.announcement.text;
+      return { announcementMessage: siteContent.announcement.text, announcementType: 'default' as const };
     }
-    return null;
+
+    return { announcementMessage: null, announcementType: null };
   }, []);
 
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcementMessage);
@@ -63,13 +82,28 @@ const Header: React.FC = () => {
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Announcement Banner */}
       {showAnnouncement && announcementMessage && (
-        <div className="bg-karak-accent text-white py-2 px-4 relative flex items-center justify-center text-center">
+        <div
+          className={`py-2 px-4 relative flex items-center justify-center text-center ${
+            announcementType === 'closed'
+              ? 'bg-red-600 text-white'
+              : 'bg-karak-accent text-white'
+          }`}
+          role="alert"
+          aria-live="polite"
+        >
           <p className="text-xs sm:text-sm font-medium tracking-wide">
+            {announcementType === 'closed' && (
+              <span className="mr-2" aria-hidden="true">🚫</span>
+            )}
+            {announcementType === 'special' && (
+              <span className="mr-2" aria-hidden="true">🎉</span>
+            )}
             {announcementMessage}
           </p>
-          <button 
+          <button
             onClick={() => setShowAnnouncement(false)}
             className="absolute right-4 p-1 hover:opacity-70 transition-opacity"
+            aria-label="Dismiss announcement"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>

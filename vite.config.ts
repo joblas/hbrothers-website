@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import path from 'path';
 import fs from 'fs';
 import { defineConfig, loadEnv } from 'vite';
@@ -13,6 +14,11 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+      },
+      test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './setupTests.ts',
       },
       plugins: [
         react(),

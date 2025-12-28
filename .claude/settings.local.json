@@ -24,7 +24,8 @@
       "Bash(npx tsx:*)",
       "Bash(npx ts-node:*)",
       "Bash(npx vite-node:*)",
-      "Bash(del \"C:\\Users\\blasj\\Projects\\hbrothers-website\\test-holidays.ts\")"
+      "Bash(del \"C:\\Users\\blasj\\Projects\\hbrothers-website\\test-holidays.ts\")",
+      "Bash(npm test:*)"
     ],
     "deny": [],
     "ask": []

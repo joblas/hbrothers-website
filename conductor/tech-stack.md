@@ -20,3 +20,11 @@
 
 ## 5. Third-Party Integrations
 *   **Menufy:** Backend provider for online ordering and menu management.
+
+## 6. Quality Assurance
+*   **Vitest:** Blazing fast unit test framework powered by Vite.
+*   **React Testing Library:** Testing utilities to test React components in a user-centric way.
+
+---
+**2025-12-28 Update:** Added Quality Assurance section to support TDD workflow.
+
