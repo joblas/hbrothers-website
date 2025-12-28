@@ -12,7 +12,7 @@ interface Brewery {
 }
 
 const BREWERIES: Brewery[] = [
-  { name: 'Stone Brewing' },
+  { name: 'Stone Brewing', logoUrl: '/images/brewery-stone.png' },
   { name: 'Burgeon Beer Co' },
   { name: 'Artifex Brewing' },
 ];
@@ -47,15 +47,26 @@ const BeerSection: React.FC = () => {
               key={brewery.name}
               className="flex flex-col items-center gap-2"
             >
-              {/* Placeholder for brewery logo - can be replaced with actual images */}
-              <div
-                className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center"
-                aria-hidden="true"
-              >
-                <span className="text-karak-accent text-3xl md:text-4xl font-bold">
-                  {brewery.name.charAt(0)}
-                </span>
-              </div>
+              {brewery.logoUrl ? (
+                <div
+                  className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center p-3"
+                >
+                  <img
+                    src={brewery.logoUrl}
+                    alt={`${brewery.name} logo`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <span className="text-karak-accent text-3xl md:text-4xl font-bold">
+                    {brewery.name.charAt(0)}
+                  </span>
+                </div>
+              )}
               <span className="text-white/90 text-sm font-medium tracking-wide">
                 {brewery.name}
               </span>
