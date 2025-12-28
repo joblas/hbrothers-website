@@ -13,8 +13,8 @@ interface Brewery {
 
 const BREWERIES: Brewery[] = [
   { name: 'Stone Brewing', logoUrl: '/images/brewery-stone.png' },
-  { name: 'Burgeon Beer Co' },
-  { name: 'Artifex Brewing' },
+  { name: 'Burgeon Beer Co', logoUrl: '/images/brewery-burgeon.png' },
+  { name: 'Artifex Brewing', logoUrl: '/images/brewery-artifex.png' },
 ];
 
 const BeerSection: React.FC = () => {
