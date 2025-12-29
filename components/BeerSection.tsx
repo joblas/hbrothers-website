@@ -11,10 +11,12 @@ interface Brewery {
   logoUrl?: string;
 }
 
+const BASE_URL = import.meta.env.BASE_URL || '/';
+
 const BREWERIES: Brewery[] = [
-  { name: 'Stone Brewing', logoUrl: '/images/brewery-stone.png' },
-  { name: 'Burgeon Beer Co', logoUrl: '/images/brewery-burgeon.png' },
-  { name: 'Artifex Brewing', logoUrl: '/images/brewery-artifex.png' },
+  { name: 'Stone Brewing', logoUrl: `${BASE_URL}images/brewery-stone.png` },
+  { name: 'Burgeon Beer Co', logoUrl: `${BASE_URL}images/brewery-burgeon.png` },
+  { name: 'Artifex Brewing', logoUrl: `${BASE_URL}images/brewery-artifex.png` },
 ];
 
 const BeerSection: React.FC = () => {
