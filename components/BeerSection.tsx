@@ -12,15 +12,15 @@ interface Brewery {
 }
 
 const BREWERIES: Brewery[] = [
-  { name: 'Stone Brewing', logo: 'brewery-stone.png' },
-  { name: 'Burgeon Beer Co', logo: 'brewery-burgeon.png' },
-  { name: 'Artifex Brewing', logo: 'brewery-artifex.png' },
+  { name: 'Stone Brewing', logo: 'brewery-stone.webp' },
+  { name: 'Burgeon Beer Co', logo: 'brewery-burgeon.webp' },
+  { name: 'Artifex Brewing', logo: 'brewery-artifex.webp' },
 ];
 
 const BeerSection: React.FC = () => {
   const instagramHandle = '@hbrothers_esco';
   const instagramUrl = siteContent.restaurant.instagramUrl;
-  const baseUrl = import.meta.env.BASE_URL || '/';
+  const baseUrl = import.meta.env.BASE_URL;
 
   return (
     <section
