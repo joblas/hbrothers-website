@@ -243,10 +243,10 @@ const HBrothersConcierge: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 flex flex-col items-end">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 w-[calc(100vw-40px)] sm:w-[380px] h-[600px] max-h-[80vh] bg-[#f9fafb] rounded-[24px] shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 origin-bottom-right">
+        <div className="mb-4 w-[calc(100vw-32px)] sm:w-[380px] h-[500px] md:h-[600px] max-h-[70vh] md:max-h-[80vh] bg-[#f9fafb] rounded-[24px] shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 origin-bottom-right">
 
           {/* Header */}
           <div className="bg-karak-primary px-6 py-4 flex justify-between items-center shrink-0 shadow-sm relative overflow-hidden">
