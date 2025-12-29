@@ -8,20 +8,19 @@ import siteContent from '../content.json';
 
 interface Brewery {
   name: string;
-  logoUrl?: string;
+  logo: string;
 }
 
-const BASE_URL = import.meta.env.BASE_URL || '/';
-
 const BREWERIES: Brewery[] = [
-  { name: 'Stone Brewing', logoUrl: `${BASE_URL}images/brewery-stone.png` },
-  { name: 'Burgeon Beer Co', logoUrl: `${BASE_URL}images/brewery-burgeon.png` },
-  { name: 'Artifex Brewing', logoUrl: `${BASE_URL}images/brewery-artifex.png` },
+  { name: 'Stone Brewing', logo: 'brewery-stone.png' },
+  { name: 'Burgeon Beer Co', logo: 'brewery-burgeon.png' },
+  { name: 'Artifex Brewing', logo: 'brewery-artifex.png' },
 ];
 
 const BeerSection: React.FC = () => {
   const instagramHandle = '@hbrothers_esco';
   const instagramUrl = siteContent.restaurant.instagramUrl;
+  const baseUrl = import.meta.env.BASE_URL || '/';
 
   return (
     <section
@@ -49,26 +48,15 @@ const BeerSection: React.FC = () => {
               key={brewery.name}
               className="flex flex-col items-center gap-2"
             >
-              {brewery.logoUrl ? (
-                <div
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center p-3"
-                >
-                  <img
-                    src={brewery.logoUrl}
-                    alt={`${brewery.name} logo`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              ) : (
-                <div
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <span className="text-karak-accent text-3xl md:text-4xl font-bold">
-                    {brewery.name.charAt(0)}
-                  </span>
-                </div>
-              )}
+              <div
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 border-2 border-karak-accent/30 flex items-center justify-center p-3"
+              >
+                <img
+                  src={`${baseUrl}images/${brewery.logo}`}
+                  alt={`${brewery.name} logo`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <span className="text-white/90 text-sm font-medium tracking-wide">
                 {brewery.name}
               </span>
