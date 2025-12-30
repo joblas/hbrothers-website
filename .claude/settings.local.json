@@ -25,7 +25,16 @@
       "Bash(npx ts-node:*)",
       "Bash(npx vite-node:*)",
       "Bash(del \"C:\\Users\\blasj\\Projects\\hbrothers-website\\test-holidays.ts\")",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(ls:*)",
+      "Bash(npm run deploy:*)",
+      "WebFetch(domain:www.yelp.com)",
+      "WebFetch(domain:www.tripadvisor.com)",
+      "WebFetch(domain:restaurantguru.com)",
+      "WebFetch(domain:www.restaurantji.com)",
+      "WebFetch(domain:wanderlog.com)",
+      "WebFetch(domain:www.grubhub.com)",
+      "WebFetch(domain:www.postcard.inc)"
     ],
     "deny": [],
     "ask": []

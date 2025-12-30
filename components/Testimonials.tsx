@@ -1,66 +1,88 @@
 import React from 'react';
 
+// Real reviews from Google, Yelp, and Facebook - sourced from actual H Brothers customers
 const REVIEWS = [
   {
-    name: "Katherine W.",
-    text: "My family adored the food! Well made, very fresh, and so tasty! My mother-in-law loved the Caesar wrap.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Katherine",
+    name: "Annette L.",
+    text: "Stopped at H Brother's while at Crusin' Grand. This place is an absolute gem! The food is nothing short of exceptional. The brisket sandwich was incredibly tender and juicy.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Annette",
     source: "Google",
     rating: 5
   },
   {
-    name: "David M.",
-    text: "Excellent food and quality. The Parmesan Crusted Chicken Sandwich and Shrimp Po-Boy are my new favorites!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+    name: "Bosie L.",
+    text: "The service is spectacular. The food is spectacular. The ambiance is spectacular.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Bosie",
     source: "Yelp",
     rating: 5
   },
   {
-    name: "Nicki J.",
-    text: "Always love H Bros. Buffalo Ranch Chicken Wrap and Original Poutine are a must try!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Nicki",
+    name: "JP M.",
+    text: "So amazingly delicious. The ingredients in the Cuban all work so well together and the portion is enough for two hungry grown men to split. It's a destination restaurant and worth the trip.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=JP",
     source: "Google",
     rating: 5
   },
   {
-    name: "T. T.",
-    text: "Delicious brisket sandwich, amazing onion rings, and the most beautiful apple/cranberry/walnut salad.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=TT",
+    name: "Heidi C.",
+    text: "Took the boys for a meal here...every single bite was delicious, fresh, comforting.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Heidi",
     source: "Yelp",
     rating: 5
   },
   {
-    name: "Amanda S.",
-    text: "Very good... just as described. Excellent menu with plenty of comfort food classics.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Amanda",
+    name: "Mitch S.",
+    text: "I love the food and service. Great home made chips and ask for the fries well done. Had the chicken sandwich with bacon. Yum. Loved the beer selection too.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mitch",
     source: "Google",
     rating: 5
   },
   {
-    name: "Ona L.",
-    text: "Fantastic every time!! Great food as always and nicely packaged for takeout.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ona",
+    name: "Sarah K.",
+    text: "Fantastic food! Everything my party of 5 ordered was delicious.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
     source: "Yelp",
     rating: 5
   },
   {
-    name: "Maria G.",
-    text: "Best comfort food in Escondido! The mac and cheese is incredible and the staff is always so friendly.",
+    name: "Dave P.",
+    text: "Food was amazing. Doesn't disappoint. Good vibe and staff was extremely welcoming.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dave",
+    source: "Facebook",
+    rating: 5
+  },
+  {
+    name: "Tania R.",
+    text: "Friendly and attentive servers! Really appreciated the option to order a side of the poutine fries they were so good! I would highly recommend the brisket sandwich.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Tania",
+    source: "Google",
+    rating: 4
+  },
+  {
+    name: "Linda H.",
+    text: "AMAZZZZING FOOD. GREAT PORTIONS!!!! Servers great.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Linda",
+    source: "Yelp",
+    rating: 5
+  },
+  {
+    name: "Maria D.",
+    text: "Delicious comfort food plus nice casual ambiance. They have indoor and outdoor seating.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
     source: "Facebook",
     rating: 5
   },
   {
-    name: "James R.",
-    text: "We bring the whole family here every weekend. Kids love the loaded fries and I can't get enough of the brisket!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=James",
-    source: "Facebook",
+    name: "Josh R.",
+    text: "Great burger spot, portions are just right, quality is high, prices very reasonable and large menu selection. Also decent beer selection on tap.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Josh",
+    source: "Google",
     rating: 5
   },
   {
-    name: "Sarah P.",
-    text: "Finally found our new favorite spot! The portion sizes are generous and everything tastes homemade.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    name: "Laurie C.",
+    text: "We love H Brothers! Everything on the menu is good and I mean everything!",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Laurie",
     source: "Facebook",
     rating: 5
   }
@@ -117,9 +139,9 @@ const Testimonials: React.FC = () => {
               <div className="bg-[#FDF8F3] p-8 md:p-10 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div>
                   <div className="flex justify-between items-start mb-6">
-                    <div className="flex gap-0.5 text-karak-secondary">
+                    <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-karak-secondary' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                       ))}
                     </div>
                     <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full border border-gray-100 shadow-xs">
