@@ -26,3 +26,7 @@ dist-ssr
 # Environment variables
 .env
 .env.local
+
+# Build output (deployed via GitHub Actions to keep API keys secure)
+docs/
+dist/
