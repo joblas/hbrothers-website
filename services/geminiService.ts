@@ -152,12 +152,16 @@ export const getChatResponse = async (
   }
 
   try {
+    console.log("[Gemini] API Key present:", !!API_KEY, "Length:", API_KEY.length);
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    // Use stable model instead of experimental
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const fullPrompt = `${SYSTEM_PROMPT}\n\nCustomer says: "${userMessage}"\n\nRespond as the H Brothers Concierge:`;
 
+    console.log("[Gemini] Sending request...");
     const result = await model.generateContent(fullPrompt);
     const responseText = result.response.text();
+    console.log("[Gemini] Response received, length:", responseText.length);
 
     const menuItems = detectMenuItems(responseText);
     const suggestedReplies = generateSuggestedReplies(responseText, ctx);
@@ -167,6 +171,7 @@ export const getChatResponse = async (
   } catch (error: any) {
     console.error("[Gemini] Error:", error?.message || error);
     console.error("[Gemini] Status:", error?.status);
+    console.error("[Gemini] Error name:", error?.name);
     console.error("[Gemini] Full error:", JSON.stringify(error, null, 2));
     return {
       text: `Sorry, I'm having trouble right now. Please call us at (442) 999-5542!`,
