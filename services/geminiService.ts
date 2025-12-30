@@ -154,8 +154,8 @@ export const getChatResponse = async (
   try {
     console.log("[Gemini] API Key present:", !!API_KEY, "Length:", API_KEY.length);
     const genAI = new GoogleGenerativeAI(API_KEY);
-    // Use stable model instead of experimental
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Use stable gemini-2.0-flash model
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     const fullPrompt = `${SYSTEM_PROMPT}\n\nCustomer says: "${userMessage}"\n\nRespond as the H Brothers Concierge:`;
 
     console.log("[Gemini] Sending request...");
