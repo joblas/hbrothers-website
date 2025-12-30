@@ -78,6 +78,12 @@ const Header: React.FC = () => {
     </svg>
   );
 
+  const FacebookIcon = () => (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Announcement Banner */}
@@ -133,23 +139,32 @@ const Header: React.FC = () => {
               
               {/* Social Icons Integrated into Nav with Pop colors */}
               <div className="flex items-center gap-5">
-                <a 
-                  href={siteContent.restaurant.instagramUrl} 
-                  target="_blank" 
+                <a
+                  href={siteContent.restaurant.instagramUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#E4405F] hover:scale-110 active:scale-95 transition-all drop-shadow-sm"
                   aria-label="Instagram"
                 >
                   <InstagramIcon />
                 </a>
-                <a 
-                  href={siteContent.restaurant.yelpUrl} 
-                  target="_blank" 
+                <a
+                  href={siteContent.restaurant.yelpUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#D32323] hover:scale-110 active:scale-95 transition-all drop-shadow-sm flex items-center justify-center"
                   aria-label="Yelp"
                 >
                   <YelpIcon />
+                </a>
+                <a
+                  href={siteContent.restaurant.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1877F2] hover:scale-110 active:scale-95 transition-all drop-shadow-sm"
+                  aria-label="Facebook"
+                >
+                  <FacebookIcon />
                 </a>
               </div>
             </nav>
@@ -193,11 +208,14 @@ const Header: React.FC = () => {
             <button onClick={() => scrollIntoView('contact')} className="block w-full px-3 py-4 text-[10px] font-bold text-karak-primary uppercase tracking-widest border-b border-gray-50">Find Us</button>
             
             <div className="flex justify-center gap-10 py-6">
-              <a href={siteContent.restaurant.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[#E4405F]">
+              <a href={siteContent.restaurant.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[#E4405F]" aria-label="Instagram">
                 <InstagramIcon />
               </a>
-              <a href={siteContent.restaurant.yelpUrl} target="_blank" rel="noopener noreferrer" className="text-[#D32323]">
+              <a href={siteContent.restaurant.yelpUrl} target="_blank" rel="noopener noreferrer" className="text-[#D32323]" aria-label="Yelp">
                 <YelpIcon />
+              </a>
+              <a href={siteContent.restaurant.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-[#1877F2]" aria-label="Facebook">
+                <FacebookIcon />
               </a>
             </div>
 

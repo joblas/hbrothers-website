@@ -11,3 +11,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## [~] Track: Final Production Deployment - H-Brothers (December 2025 Update)
 *Link: [./conductor/tracks/production_finalization_20251228/](./conductor/tracks/production_finalization_20251228/)*
+
+---
+
+## [~] Track: Facebook links, Icons and reviews
+*Link: [./conductor/tracks/facebook_integration_20251230/](./conductor/tracks/facebook_integration_20251230/)*
